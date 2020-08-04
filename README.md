@@ -13,10 +13,11 @@ There are BASIC-commands for http-based communication (both incoming and outgoin
 * (Alternative) ESP8266: D1 Mini ESP8266 (https://www.aliexpress.com/item/32651747570.html)
 * FPGA-board:  I use a A-C4E6E10 with an Cyclone IV EP4CE6E22C8 (https://www.aliexpress.com/item/4001125259366.html) but other FPGA-boards may also work. The FPGA-program needs 953 logical elements, 258 registers, 11 pins, 4688 bits of on-chip memory and 1 on-chip pll. The source in this repository has all pins assigned, but they most likely won't work for other boards.
 * USB-blaster or other JTAG-programmer for uploading to the FPGA
-* Wires (M-F) to connect the ESP32 and FPGA-board
+* Five wires (M-F) to connect the ESP32 and FPGA-board
 * Arduino-IDE to compile and upload to the ESP32
 * Quartus Prime 19.1 Lite Edition with support for the Cyclone IV-family to compile and upload to the FPGA
 * (Optional) 3D-printer to print the case for the computer
+* (Optional) Two small screws to join the two parts of the case and four small screws to join the FPGA-board to the bottom of the case.
 
 Using the ESP8266 instead of the ESP32 will result in a lot less memory available for BASIC-programs. The ESP32 has 113792 bytes available for BASIC where the ESP8266 has just 16384 bytes available.
 
@@ -41,5 +42,19 @@ The FPGA-board is now ready for use.
 1. Remove supports
 
 ### Connect ESP and FPGA
+For a D1 Mini ESP32
+1. Connect FPGA-pin GND to ESP-pin GND
+1. Connect FPGA-pin 3.3V to ESP-pin 3.3V
+1. Connect FPGA-pin 30 to ESP-pin IO17 (TX UART2)
+1. Connect FPGA-pin 28 to ESP-pin IO16 (RX UART2)
+1. Connect FPGA-pin 32 to ESP-pin IO21
+
+For a D1 Mini ESP8266
+1. Connect FPGA-pin GND to ESP-pin GND
+1. Connect FPGA-pin 3.3V to ESP-pin 3.3V
+1. Connect FPGA-pin 30 to ESP-pin TX
+1. Connect FPGA-pin 28 to ESP-pin RX
+1. Connect FPGA-pin 32 to ESP-pin D1
+
 ### Place ESP and FPGA in 3D-printed case
 
