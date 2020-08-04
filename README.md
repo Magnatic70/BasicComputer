@@ -37,7 +37,7 @@ Using the ESP8266 instead of the ESP32 will result in a lot less memory availabl
 1. Use the Arduino-IDE to load, compile and upload BASCOMP002.ino to the ESP.
 
 If you don't have a PS/2-keyboard
-1. Follow the instructions in https://github.com/Magnatic70/magnatic-esp/README.md chapters "First deployment" and "Initial configuration"
+1. Follow the instructions in https://github.com/Magnatic70/magnatic-esp/blob/master/README.md chapters "First deployment" and "Initial configuration"
 1. Upload the file keyboard.html with WinSCP to the ESP
 
 The ESP is now ready for use.
@@ -73,7 +73,7 @@ Your BASIC-computer should now work. Connect a VGA-monitor and (optional) PS/2-k
 
 If you have a PS/2-keyboard you can start using the BASIC-computer. You can connect the computer to your Wifi-network using the commands SETSSID and SETSSIDPW.
 
-If you don't have a PS/2-keyboard you can use the HTML-based keyboard by going to the URL at the top of the screen. As long as the browser-window is active all keyboard-activity is sent to the ESP.
+If you don't have a PS/2-keyboard you can use the HTML-based keyboard (if you did upload keyboard.html to the ESP) by going to the URL at the top of the screen. As long as the browser-window is active all keyboard-activity is sent to the ESP.
 
 Type HELP or HELP2 for the available BASIC-commands and functions and HELP3 for cursor navigation cues.
 
