@@ -1,0 +1,57 @@
+SAVE        SAVE "test" saves the current program under the name "test" 
+LOAD        LOAD "test" clears all variables and the current program and
+            loads the program "test"
+DIR         DIR lists all programs
+DELETE      DELETE "test" removes the program "test"
+HTTPGET$    HTTPGET$("http://www.google.com/") returns the HTML-source of
+            http://www.google.com/" as a string.
+            Be carefull to not overflow the memory. This will result in 
+            a crash and reboot of the host.
+FREEMEM     Returns the number of free bytes available for variables and
+            program lines.
+FREEHOST    Returns the number of free bytes available in the ESP-host
+            On a ESP32 there will be a lot of available memory, but this
+            is not contiguous and therefore not useable as basic memory.
+            See SETMEMSIZE for the largest contiguous amount.
+IPADDR$     Returns the IP-address of the ESP-host as a string
+SETSSID     SETSSID("myssid") sets the ssid the ESP-host will use. Reboot needed        
+SETSSIDPW   SETSSIDPW("mypassword" set the password the ESP-host will use
+            Reboot needed
+GETSSID$    Returns the current SSID as a string     
+MILLIS      Returns the number of milliseconds since the start of the ESP-host
+OPEN        OPEN("testdata") opens a file for reading and writing
+            Reading starts at 0, writing starts at the end of the file
+            If the file does not exist it will be created
+            ONLY ONE FILE CAN BE OPEN AT THE SAME TIME
+CLOSE       CLOSE closes the current file
+READLINE$   Returns a line from the current file as a string
+READ$       READ(4) returns 4 characters from the current file as a string
+READPOS     Returns the position of the read-cursor
+WRITEPOS    Returns the position of the write-cursor
+RSEEK       RSEEK(10) sets the read-cursor at position 10
+WSEEK       WSEEK(10) sets the write-cursor at position 10
+WRITE       Writes a string or number to the current file
+ERASE       ERASE("testdata") erases "testdata"
+DATADIR     Lists all data files
+EOF         Returns true if the end of the open file is reached
+HTTPRECV$   Returns the last value received on 
+            http://IPADDR$/basicrecv?value=<something> as a string
+HTTPRECV    Returns 1 when a new value is received
+REBOOT      Reboots the ESP-host
+INDEXOF     LET a$="test":PRINT INDEXOF("e",a$) returns 2
+COUNTOF     LET a$="test":PRINT COUNTOF("t",a$) returns 2
+FGCOLOR     FGCOLOR 0 sets the foreground color for the next print to 0
+            FGCOLOR "blue" is also valid. Color names are case-insensitive
+            0 = Black, 1 = Blue,   2 = Green,  3 = Cyan,
+            4 = Red,   5 = Purple, 6 = Yellow, 7 = White
+            Use of color names is also possible in BGCOLOR, SETFG and SETBG
+BGCOLOR     BGCOLOR 0 sets the background color for the next print to 0
+SETMEMSIZE  SETMEMSIZE 1000:REBOOT. Sets the amount of memory available for
+            basic to 1000 bytes. If set higher than available in the host
+            the system will detect this and revert to a safe value of
+            8192 bytes. Maximum value for a ESP32 is 113792. Maximum value
+            for a ESP8266 is 16384 bytes.
+SETFG       SETFG 0 sets the foreground color to 0 and repaints the screen
+SETBG       SETBG 1 sets the background color to 1 and repaints the screen
+HELP        Shows the first help page
+HELP3       Shows the cursor navigation help page

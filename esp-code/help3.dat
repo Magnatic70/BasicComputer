@@ -1,0 +1,7 @@
+Backspace   Removes the previous character
+Home        Moves the cursor to the start of the line
+End         Moves the cursor to the end of the line
+Page Up     Moves the cursor up to the next empty line
+Page Down   Moves the cursor down to the next empty line
+Delete      Clears the current line, moves the cursor to the start of the line
+Cursor keys Move the cursor one step at a time

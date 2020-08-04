@@ -1,0 +1,83 @@
+<html>
+<head>
+<script>
+	var buffer=[];
+	var bufpos=0;
+	function sendKey(keyCode){
+		buffer[bufpos]=keyCode;
+		bufpos++;
+		var xmlhttp=new XMLHttpRequest();
+		keyToSend=buffer[0];
+		httpkey='';
+		if(keyToSend.length==1){
+			if(buffer[0]==' '){
+				httpkey='%20';
+			}
+			else{
+				httpkey=buffer[0];
+			}
+		}
+		else{
+			httpkey='';
+			if(keyToSend=="Enter"){
+				httpkey="%0d";
+			}
+			if(keyToSend=="Escape"){
+				httpkey="%1b";
+			}
+			if(keyToSend=="Backspace"){
+				httpkey="%08";
+			}
+			if(keyToSend=="ArrowDown"){
+				httpkey="%11";
+			}
+			if(keyToSend=="ArrowUp"){
+				httpkey="%12";
+			}
+			if(keyToSend=="ArrowLeft"){
+				httpkey="%13";
+			}
+			if(keyToSend=="ArrowRight"){
+				httpkey="%14";
+			}
+			if(keyToSend=="Home"){
+				httpkey="%02";
+			}
+			if(keyToSend=="End"){
+				httpkey="%03";
+			}
+			if(keyToSend=="PageDown"){
+				httpkey="%04";
+			}
+			if(keyToSend=="PageUp"){
+				httpkey="%01";
+			}
+			if(keyToSend=="Delete"){
+				httpkey="%18";
+			}
+		}
+		if(httpkey!=''){
+			xmlhttp.open("GET","/httpkey?key="+httpkey,false);
+			xmlhttp.send();
+		}
+		if(bufpos>0){
+			for(i=0;i<bufpos;i++){
+				buffer[i]=buffer[i+1];
+			}
+			bufpos--;
+		}
+	}
+	function start(){
+		document.addEventListener('keydown',function(event){
+			sendKey(event.key);
+		});
+	}
+</script>
+</head>
+<body onload="start()">
+	Just type in this browser tab and all keypresses are forwarded to the Basic Computer.<br>
+	Cursor keys, Home, End, Enter, Backspace, Delete, PgUp, PgDn and Escape are supported.<br>
+</body>
+</html>
+
+		

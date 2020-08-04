@@ -1,0 +1,57 @@
+Based on the BASIC-interpreter by Robin Edwards.
+            https://github.com/robinhedwards/ArduinoBASIC
+
+All variables, functions and commands are case-insensitive.
+Variable names can be up to 8 alphanumeric characters but start with a letter.
+ESC-key breaks the running program.
+
+AND         For use in if-statements.
+OR          For use in if-statements.
+NOT         For use in if-statements.
+PRINT       Prints strings and numbers at the current position.
+LET         Assigns a value to a variable.
+            Assigning values without LET also works.
+            LET a$="Test"
+            LET a=10
+            a$ and a are different variables
+LIST        LIST shows all lines of the current basic program. 
+            LIST 100 shows all lines from line 100 upwards.
+            LIST 10,100 shows all lines from 10 up to 100.
+RUN         Clears all variables and runs the current basic program. 
+            RUN 100 runs the current basic program from line 100.
+GOTO        GOTO 100 starts or continues the program at line 100.
+REM         All remaining characters in the program line are ignored by
+            the interpreter.
+STOP        Stops running the program 
+CONTINUE    Continues running the program after STOP or ESC-key
+IF          Start of IF-statement
+THEN        Statements after this will be run if IF-statement is true. 
+            IF a>100 THEN GOTO 100
+LEN         Returns length of string. PRINT LEN A$.
+VAL         Returns integer value of string. PRINT VAL("10")+10.
+RND         Returns random value between 0 and 1. PRINT RND.
+INT         Returns rounded down value of number. PRINT INT(RND)
+STR$        Returns string value of number. PRINT STR$(10)
+FOR         Start of FOR-statement
+TO          Part of FOR-statement. FOR a=1 TO 100
+STEP        Optional part of FOR-statement. FOR a=0 TO 100 STEP 2
+NEXT        End of FOR-loop. FOR a=1 TO 100: PRINT a: NEXT a
+MOD         Returns the modula. PRINT 5 MOD 3
+NEW         Clears the current program and all variables.
+GOSUB       GOSUB 100 starts or continues the program at line 100.
+RETURN      Returns to the line after the last GOSUB
+DIM         Constructs an array. DIM a$(10) constructs an array of 10 strings
+            LET a$(1)="one" assigns "one" to the first string in this array
+            The array a$(10) and the string a$ are different variables
+            Arrays can be multi-dimensional and either strings or numbers.
+LEFT$       LET a$="test":PRINT LEFT$(a$,2) returns "te"
+RIGHT$      LET a$="test":PRINT RIGHT$(a$,2) returns "st"
+MID$        LET a$="test":PRINT MID$(a$,2,4) returns "est"
+CLS         Clears the screen
+PAUSE       PAUSE 500, pauses the program for 500 ms
+POSITION    POSITION 10,20: PRINT "here" will print "here"
+            at column 10 in row 20.
+INKEY$      Returns one character from the keyboard-buffer as a string
+            If keyboard-buffer is empty then it returns a string with length 0
+HELP2       Shows the second help page
+HELP3       Shows the cursor navigation help page
