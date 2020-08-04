@@ -9,7 +9,7 @@ The computer has a 80x60 character display with a 640x480 resolution. You can us
 There are BASIC-commands for http-based communication (both incoming and outgoing), reading and writing of programs to SPIFFS, reading and writing of data to SPIFFS.
 
 ## Thanks to Robin Edwards for the BASIC-interpreter
-I didn't write the BASIC-interpreter myself, but it is based on https://github.com/robinhedwards/ArduinoBASIC by Robin Edwards.
+I didn't write the core of the BASIC-interpreter myself, but it is based on https://github.com/robinhedwards/ArduinoBASIC by Robin Edwards.
 
 I did adapt the interpreter so that it can be used on an ESP. An ESP needs variables to be 4 byte aligned in memory. The Arduino does not have that restriction.
 
