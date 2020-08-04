@@ -12,9 +12,10 @@ There are BASIC-commands for http-based communication (both incoming and outgoin
 * ESP32: I use a D1 Mini ESP32 (https://www.aliexpress.com/item/32816065152.html)
 * (Alternative) ESP8266: D1 Mini ESP8266 (https://www.aliexpress.com/item/32651747570.html)
 * FPGA-board:  I use a A-C4E6E10 with an Cyclone IV EP4CE6E22C8 (https://www.aliexpress.com/item/4001125259366.html) but other FPGA-boards may also work. The FPGA-program needs 953 logical elements, 258 registers, 11 pins, 4688 bits of on-chip memory and 1 on-chip pll. The source in this repository has all pins assigned, but they most likely won't work for other boards.
+* USB-blaster or other JTAG-programmer for uploading to the FPGA
 * Wires (M-F) to connect the ESP32 and FPGA-board
 * Arduino-IDE to compile and upload to the ESP32
-* Quartus Prime 19.1 Lite Edition to compile and upload to the FPGA
+* Quartus Prime 19.1 Lite Edition with support for the Cyclone IV-family to compile and upload to the FPGA
 * (Optional) 3D-printer to print the case for the computer
 
 Using the ESP8266 instead of the ESP32 will result in a lot less memory available for BASIC-programs. The ESP32 has 113792 bytes available for BASIC where the ESP8266 has just 16384 bytes available.
@@ -22,9 +23,21 @@ Using the ESP8266 instead of the ESP32 will result in a lot less memory availabl
 ## How to make it
 ### ESP
 #### Compilation
-Use the Arduino-IDE to load BASCOMP002.ino
+1. Download all files from https://github.com/Magnatic70/magnatic-esp, except magnatic-esp.ino and add these files to the ones in this projects esp-source folder.
+1. Use the Arduino-IDE to load, compile and upload BASCOMP002.ino to the ESP.
+The ESP is now ready for use.
+
 ### FPGA
-### 3D-print
+1. Load asciiVGAVideoCard.qpf in Quartus Prime and Start Compilation
+1. File --> Convert programming files --> Open conversion Setup Data -->  sof2jic4cycloneiv.cof --> Open --> Generate
+1. Programmer --> Add file --> output_files/asciiVGACard.jic --> Open --> Check the Program/Configure checkbox in the second line --> Start
+The FPGA-board is now ready for use.
+
+### (Optional) 3D-print
+1. Print the bottom.stl with a layer height of 0.2mm, no supports needed, infill 10%
+1. Print the top.stl with a layer height of 0.2mm, SUPPORTS NEEDED!, infill 10%
+1. Remove supports
+
 ### Connect ESP and FPGA
 ### Place ESP and FPGA in 3D-printed case
 
