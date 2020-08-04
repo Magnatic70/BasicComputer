@@ -15,7 +15,7 @@ FREEHOST    Returns the number of free bytes available in the ESP-host
             See SETMEMSIZE for the largest contiguous amount.
 IPADDR$     Returns the IP-address of the ESP-host as a string
 SETSSID     SETSSID("myssid") sets the ssid the ESP-host will use. Reboot needed        
-SETSSIDPW   SETSSIDPW("mypassword" set the password the ESP-host will use
+SETSSIDPW   SETSSIDPW("mypassword") sets the password the ESP-host will use
             Reboot needed
 GETSSID$    Returns the current SSID as a string     
 MILLIS      Returns the number of milliseconds since the start of the ESP-host
