@@ -1,4 +1,4 @@
-include <../magnatic-library.scad>
+include <magnatic-library.scad>
 
 $fn=128;
 
