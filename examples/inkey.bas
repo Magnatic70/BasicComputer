@@ -1,0 +1,3 @@
+10 LET a$=INKEY$
+20 IF LEN(a$)>0 THEN PRINT a$;
+30 GOTO 10

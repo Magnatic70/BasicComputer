@@ -1,0 +1,3 @@
+10 FOR a=0 TO 4000
+20 PRINT CHR$(a);
+30 NEXT a
