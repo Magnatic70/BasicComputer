@@ -77,7 +77,7 @@ If you don't have a PS/2-keyboard you can use the HTML-based keyboard by going t
 
 Type HELP or HELP2 for the available BASIC-commands and functions and HELP3 for cursor navigation cues.
 
-### Place ESP and FPGA in 3D-printed case
+### (Optional) Place ESP and FPGA in 3D-printed case
 1. Use four small screws to mount the FPGA-board to the bottom of the case.
 1. Place the ESP in the small space in one of the sides of the top of the case. The springiness of the wires will keep the ESP in that position.
 1. Align top and bottom and use two screws at the bottom of the case to join the two parts.
