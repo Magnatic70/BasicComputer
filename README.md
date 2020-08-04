@@ -13,7 +13,7 @@ I didn't write the core of the BASIC-interpreter myself, but it is based on http
 
 I did adapt the interpreter so that it can be used on an ESP. An ESP needs variables to be 4 byte aligned in memory. The Arduino does not have that restriction.
 
-I also added al lot of new commands and functions regarding mainly http-communication, reading and writing to SPIFFS and some other useful stuff.
+I also added al lot of new commands and functions regarding mainly http-communication, reading and writing to SPIFFS and some other useful stuff. And most importantly, I wrote a new host-interface for the intepreter that allows the ESP to communicate with the FPGA.
 
 ## Components, tools and software required
 * ESP32: I use a D1 Mini ESP32 (https://www.aliexpress.com/item/32816065152.html)
