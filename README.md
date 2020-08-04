@@ -18,7 +18,7 @@ I also added al lot of new commands and functions regarding mainly http-communic
 ## Components, tools and software required
 * ESP32: I use a D1 Mini ESP32 (https://www.aliexpress.com/item/32816065152.html)
 * (Alternative) ESP8266: D1 Mini ESP8266 (https://www.aliexpress.com/item/32651747570.html)
-* FPGA-board:  I use a A-C4E6E10 with an Cyclone IV EP4CE6E22C8 (https://www.aliexpress.com/item/4001125259366.html) but other FPGA-boards may also work. The FPGA-program needs 953 logical elements, 258 registers, 11 pins, 4688 bits of on-chip memory and 1 on-chip pll. The source in this repository has all pins assigned, but they most likely won't work for other boards.
+* FPGA-board:  I use a A-C4E6E10 with an Cyclone IV EP4CE6E22C8 (https://www.aliexpress.com/item/4001125259366.html) but other FPGA-boards may also work. The FPGA-program needs 953 logical elements, 258 registers, 11 pins, 4688 bits of on-chip memory and 1 on-chip pll. The source in this repository has all pins assigned, but they most likely won't work for other boards. Also the optional 3D-printed case probably won't fit.
 * USB-blaster or other JTAG-programmer for uploading to the FPGA
 * VGA-monitor
 * (Optional) PS/2 keyboard
