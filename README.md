@@ -49,11 +49,6 @@ The ESP is now ready for use.
 
 The FPGA-board is now ready for use.
 
-### (Optional) 3D-print
-1. Print the bottom.stl with a layer height of 0.2mm, no supports needed, infill 10%
-1. Print the top.stl with a layer height of 0.2mm, SUPPORTS NEEDED!, infill 10%
-1. Remove supports
-
 ### Connect ESP and FPGA
 For a D1 Mini ESP32
 1. Connect FPGA-pin GND to ESP-pin GND
@@ -76,6 +71,11 @@ If you have a PS/2-keyboard you can start using the BASIC-computer. You can conn
 If you don't have a PS/2-keyboard you can use the HTML-based keyboard (if you did upload keyboard.html to the ESP) by going to the URL at the top of the screen. As long as the browser-window is active all keyboard-activity is sent to the ESP.
 
 Type HELP or HELP2 for the available BASIC-commands and functions and HELP3 for cursor navigation cues.
+
+### (Optional) 3D-print
+1. Print the bottom.stl with a layer height of 0.2mm, no supports needed, infill 10%
+1. Print the top.stl with a layer height of 0.2mm, SUPPORTS NEEDED!, infill 10%
+1. Remove supports
 
 ### (Optional) Place ESP and FPGA in 3D-printed case
 1. Use four small screws to mount the FPGA-board to the bottom of the case.
