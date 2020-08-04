@@ -71,7 +71,11 @@ For a D1 Mini ESP8266
 
 Your BASIC-computer should now work. Connect a VGA-monitor and (optional) PS/2-keyboard to the FPGA-board and power on the board.
 
-If you have a PS/2-keyboard you can start using the BASIC-computer. If you don't have a PS/2-keyboard you can use the HTML-based keyboard by going to the URL at the top of the screen. As long as the browser-window is active all keyboard-activity is sent to the ESP.
+If you have a PS/2-keyboard you can start using the BASIC-computer. You can connect the computer to your Wifi-network using the commands SETSSID and SETSSIDPW.
+
+If you don't have a PS/2-keyboard you can use the HTML-based keyboard by going to the URL at the top of the screen. As long as the browser-window is active all keyboard-activity is sent to the ESP.
+
+Type HELP or HELP2 for the available BASIC-commands and functions and HELP3 for cursor navigation cues.
 
 ### Place ESP and FPGA in 3D-printed case
 1. Use four small screws to mount the FPGA-board to the bottom of the case.
