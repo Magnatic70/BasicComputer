@@ -25,12 +25,14 @@ Using the ESP8266 instead of the ESP32 will result in a lot less memory availabl
 #### Compilation
 1. Download all files from https://github.com/Magnatic70/magnatic-esp, except magnatic-esp.ino and add these files to the ones in this projects esp-source folder.
 1. Use the Arduino-IDE to load, compile and upload BASCOMP002.ino to the ESP.
+
 The ESP is now ready for use.
 
 ### FPGA
 1. Load asciiVGAVideoCard.qpf in Quartus Prime and Start Compilation
 1. File --> Convert programming files --> Open conversion Setup Data -->  sof2jic4cycloneiv.cof --> Open --> Generate
 1. Programmer --> Add file --> output_files/asciiVGACard.jic --> Open --> Check the Program/Configure checkbox in the second line --> Start
+
 The FPGA-board is now ready for use.
 
 ### (Optional) 3D-print
