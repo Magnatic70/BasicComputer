@@ -13,6 +13,8 @@ There are BASIC-commands for http-based communication (both incoming and outgoin
 * (Alternative) ESP8266: D1 Mini ESP8266 (https://www.aliexpress.com/item/32651747570.html)
 * FPGA-board:  I use a A-C4E6E10 with an Cyclone IV EP4CE6E22C8 (https://www.aliexpress.com/item/4001125259366.html) but other FPGA-boards may also work. The FPGA-program needs 953 logical elements, 258 registers, 11 pins, 4688 bits of on-chip memory and 1 on-chip pll. The source in this repository has all pins assigned, but they most likely won't work for other boards.
 * USB-blaster or other JTAG-programmer for uploading to the FPGA
+* VGA-monitor
+* (Optional) PS/2 keyboard
 * Five wires (M-F) to connect the ESP32 and FPGA-board
 * Arduino-IDE to compile and upload to the ESP32
 * Quartus Prime 19.1 Lite Edition with support for the Cyclone IV-family to compile and upload to the FPGA
@@ -26,6 +28,10 @@ Using the ESP8266 instead of the ESP32 will result in a lot less memory availabl
 #### Compilation
 1. Download all files from https://github.com/Magnatic70/magnatic-esp, except magnatic-esp.ino and add these files to the ones in this projects esp-source folder.
 1. Use the Arduino-IDE to load, compile and upload BASCOMP002.ino to the ESP.
+
+If you don't have a PS/2-keyboard
+1. Follow the instructions in https://github.com/Magnatic70/magnatic-esp/README.md chapters "First deployment" and "Initial configuration"
+1. Upload the file keyboard.html with WinSCP to the ESP
 
 The ESP is now ready for use.
 
@@ -56,5 +62,11 @@ For a D1 Mini ESP8266
 1. Connect FPGA-pin 28 to ESP-pin RX
 1. Connect FPGA-pin 32 to ESP-pin D1
 
-### Place ESP and FPGA in 3D-printed case
+Your BASIC-computer should now work. Connect a VGA-monitor and (optional) PS/2-keyboard to the FPGA-board and power on the board.
 
+If you have a PS/2-keyboard you can start using the BASIC-computer. If you don't have a PS/2-keyboard you can use the HTML-based keyboard by going to the URL at the top of the screen. As long as the browser-window is active all keyboard-activity is sent to the ESP.
+
+### Place ESP and FPGA in 3D-printed case
+1. Use four small screws to mount the FPGA-board to the bottom of the case.
+1. Place the ESP in the small space in one of the sides of the top of the case. The springiness of the wires will keep the ESP in that position.
+1. Align top and bottom and use two screws at the bottom of the case to join the two parts.
