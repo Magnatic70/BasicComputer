@@ -11,7 +11,7 @@ There are BASIC-commands for http-based communication (both incoming and outgoin
 ## Thanks to Robin Edwards for the BASIC-interpreter
 I didn't write the core of the BASIC-interpreter myself, but it is based on https://github.com/robinhedwards/ArduinoBASIC by Robin Edwards.
 
-I did adapt the interpreter so that it can be used on an ESP. An ESP needs variables to be 4 byte aligned in memory. The Arduino does not have that restriction.
+I did adapt the interpreter so that it can be used on an ESP. An ESP needs variables to be 4 byte aligned in memory. The Arduino does not have that restriction. The interpreter stored variables directly into a pool of reserved memory which of course was almost never 4 byte aligned. By converting variables into separate bytes and then storing those bytes I managed to use the samen approach with as little changes to the interpreter as possible.
 
 I also added al lot of new commands and functions regarding mainly http-communication, reading and writing to SPIFFS and some other useful stuff. And most importantly, I wrote a new host-interface for the intepreter that allows the ESP to communicate with the FPGA and/or the HTML-keyboard-interface.
 
