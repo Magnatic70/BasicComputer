@@ -2,7 +2,7 @@
 A text-only basic computer with VGA-output using a ESP32/ESP8266 and a FPGA
 
 ## What it does
-It is a simply computer with a BASIC-interpreter that is close to the one of the Sinclair ZX Spectrum. The computer is text-based only, but does support 8 colors for both foreground and background.
+It is a simple computer with a BASIC-interpreter that is close to the one of the Sinclair ZX Spectrum. The computer is text-based only, but does support 8 colors for both foreground and background.
 
 The computer has a 80x60 character display with a 640x480 resolution. You can use a PS2-keyboard connected to the FPGA-board or a HTML-based keyboard using a browser as input.
 
@@ -66,9 +66,9 @@ For a D1 Mini ESP8266
 
 Your BASIC-computer should now work. Connect a VGA-monitor and (optional) PS/2-keyboard to the FPGA-board and power on the board.
 
-If you have a PS/2-keyboard you can start using the BASIC-computer. You can connect the computer to your Wifi-network using the commands SETSSID and SETSSIDPW.
+If you have a PS/2-keyboard you can start using the BASIC-computer right awys. You can connect the computer to your Wifi-network using the commands SETSSID and SETSSIDPW.
 
-If you don't have a PS/2-keyboard you can use the HTML-based keyboard (if you did upload keyboard.html to the ESP) by going to the URL at the top of the screen. As long as the browser-window is active all keyboard-activity is sent to the ESP.
+If you don't have a PS/2-keyboard you can use the HTML-based keyboard (if you did upload keyboard.html to the ESP) by going to the URL at the top of the screen. As long as the browser-window is active all keyboard-activity is sent to the ESP. If you haven't configured the wifi-settings yet: Connect your wifi to the Wifi-network with BASCOMP in the name. Password: esp
 
 Type HELP or HELP2 for the available BASIC-commands and functions and HELP3 for cursor navigation cues.
 
