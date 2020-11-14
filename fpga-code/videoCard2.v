@@ -1,47 +1,92 @@
+module hvsync_generator(
+    input clk,
+    output vga_h_sync,
+    output vga_v_sync,
+    output reg inDisplayArea,
+    output reg [9:0] CounterX,
+    output reg [9:0] CounterY
+  );
+    reg vga_HS, vga_VS;
+
+    wire CounterXmaxed = (CounterX == 840);
+    wire CounterYmaxed = (CounterY == 500);
+
+    always @(posedge clk)
+    if (CounterXmaxed)
+      CounterX <= 0;
+    else
+      CounterX <= CounterX + 1;
+
+    always @(posedge clk)
+    begin
+      if (CounterXmaxed)
+      begin
+        if(CounterYmaxed)
+          CounterY <= 0;
+        else
+          CounterY <= CounterY + 1;
+      end
+    end
+
+    always @(posedge clk)
+    begin
+      vga_HS <= (CounterX > (640 + 16) && (CounterX < (640 + 16 + 64)));   // active for 64 clocks
+      vga_VS <= (CounterY > (480 + 1) && (CounterY < (480 + 1 + 3)));   // active for 1 clocks
+    end
+
+    always @(posedge clk)
+    begin
+        inDisplayArea <= (CounterX < 640) && (CounterY < 480);
+    end
+
+    assign vga_h_sync = ~vga_HS;
+    assign vga_v_sync = ~vga_VS;
+
+endmodule
+
 module vgaOutputNew(
-		input clk,						// 23.75 Mhz for VGA 640x480
+		input clk,						// 31.5 Mhz for VGA 640x480 at 75 Hz
 		input [7:0] character,
 		input [2:0] fgColor,
 		input [2:0] bgColor,
-		output [2:0] pixel,
+		output reg [2:0] pixel,
 		output hsyncOut,
 		output vsyncOut,
 		output [12:0] characterPos
 	);
-	
-	reg [9:0] counterX; // x of pixel
-	reg [8:0] counterY; // y of pixel
-	initial counterX=0;
-	initial counterY=0;
-	
-	reg [7:0] fontRom [1023:0];
-	initial $readmemh("8x8-font-hex-2.mem",fontRom);
-	
-	wire inDisplayArea;
-	wire [2:0] fontPixel;
-	wire [7:0] fontRow;
-	wire [10:0] fontAddress;
-	
-	assign characterPos[12:6]=counterX[9:3];
-	assign characterPos[5:0]=counterY[8:3];
-	assign inDisplayArea=(counterX<640 && counterY<480);
-	assign fontPixel=counterX[2:0];
-	assign fontAddress[10:3]=(character>=32 && character<=127) ? character : 32;
-	assign fontAddress[2:0]=counterY[2:0];
-	assign fontRow=fontRom[fontAddress];
-	assign pixel=inDisplayArea ? (fontRow[fontPixel] ? fgColor : bgColor) : 3'b000;
 
-	assign hsyncOut=(counterX >= (640 + 16) && (counterX <= (640 + 16 + 96)));
-	assign vsyncOut=(counterY >= (480 + 3) && (counterY <= (480 + 3 + 4)));
+    wire inDisplayArea;
+    wire [9:0] counterX;
+    wire [9:0] counterY;
+	 reg [7:0] fontRom [1023:0];
+	 initial $readmemh("8x8-font-hex-2.mem",fontRom);
 	
-	always @(posedge clk) begin
-		if(counterX==799) begin
-			counterX<=0;
-			counterY=counterY+1;
+	 reg [2:0] fontPixel;
+	 reg [7:0] fontRow;
+	 reg [10:0] fontAddress;
+
+    hvsync_generator hvsync(
+      .clk(clk),
+      .vga_h_sync(hsyncOut),
+      .vga_v_sync(vsyncOut),
+      .CounterX(counterX),
+      .CounterY(counterY),
+      .inDisplayArea(inDisplayArea)
+    );
+	 
+	 assign characterPos[12:6]=counterX[9:3];
+	 assign characterPos[5:0]=counterY[8:3];
+
+	always @(posedge clk)
+    begin
+      if (inDisplayArea) begin
+		  fontPixel=counterX[2:0]-1;
+		  fontAddress[10:3]=(character>=32 && character<=127) ? character : 32;
+		  fontAddress[2:0]=counterY[2:0];
+		  fontRow=fontRom[fontAddress];
+        pixel <= fontRow[fontPixel] ? fgColor : bgColor;
 		end
-		else
-			counterX<=counterX+1;
-		if(counterY>499)
-			counterY<=0;
-	end			
+      else // if it's not to display, go dark
+        pixel <= 3'b000;
+    end
 endmodule
